@@ -1,0 +1,10 @@
+<li class="dropdown context" ng-controller="HawtioPerspective.MenuController">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {{perspectives.getCurrent().label}} <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <li ng-repeat="perspective in perspectives.getLabels()">
+      <a href="" ng-click="setCurrent(perspective.id)">{{perspective.label}}</a>
+    </li>
+  </ul>
+</li>
