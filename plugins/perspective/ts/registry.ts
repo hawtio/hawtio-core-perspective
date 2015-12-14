@@ -9,7 +9,7 @@ module HawtioPerspective {
   export class RegistryImpl implements Registry {
 
     private perspectives:PerspectiveMap = {};
-    private current:Perspective = undefined;              
+    private current:Perspective = undefined;
     private currentId: string = undefined;
     private labels:PerspectiveLabel[] = [];
 
@@ -44,7 +44,7 @@ module HawtioPerspective {
       _.forOwn(this.perspectives, (perspective, id) => {
         if (id === this.currentId) {
           return;
-        } 
+        }
         if (perspective.isValid && angular.isFunction(perspective.isValid) && !perspective.isValid()) {
           _.remove(this.labels, id);
           return;
