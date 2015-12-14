@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     wiredep = require('wiredep').stream,
     eventStream = require('event-stream'),
-    gulpLoadPlugins = require('gulp-load-plugins');
+    gulpLoadPlugins = require('gulp-load-plugins'),
+    del = require('del');
 
 var plugins = gulpLoadPlugins({});
 var pkg = require('./package.json');
@@ -103,13 +104,11 @@ gulp.task('concat', ['template'], function() {
 });
 
 gulp.task('clean-example', ['concat-example'], function() {
-  return gulp.src(['ex-templates.js', 'ex-compiled.js'], { read: false })
-    .pipe(plugins.clean());
+  return del(['ex-templates.js', 'ex-compiled.js']);
 });
 
 gulp.task('clean', ['concat'], function() {
-  return gulp.src(['templates.js', 'compiled.js'], { read: false })
-    .pipe(plugins.clean());
+  return del(['templates.js', 'compiled.js']);
 });
 
 gulp.task('watch', ['build', 'build-example'], function() {
@@ -144,4 +143,4 @@ gulp.task('build-example', ['tsc-example', 'template-example', 'concat-example',
 gulp.task('default', ['connect']);
 
 
-    
+
